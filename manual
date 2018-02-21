@@ -1,2 +1,2 @@
 loadkeys fr
-setfont ter-132n
+setfont /usr/share/kbd/consolefonts/ter-132n
