@@ -1,2 +1,4 @@
 loadkeys fr
+systemctl enable dhcpcd
 setfont /usr/share/kbd/consolefonts/ter-132n
+
