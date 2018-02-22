@@ -91,8 +91,8 @@ exit
 loginNONroot account
 =============================================================================
 nano /etc/pacman.d/mirrorlist ********no fr no volzvagn and only https**********
-pacman -Syu
-pacman -S python xdg-user-dirs
+pacman -Syu 
+pacman -S python xdg-user-dirs zip unzip unrar
 pacman -S gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav
 pacman -S xorg xorg-server xorg-xinit xorg-apps 
 pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard 
@@ -102,7 +102,7 @@ pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard
  pacman -S xfce4 ntp git
 
 -------audio---------
-pacman -S alsa-utils zip unzip unrar
+pacman -S alsa-utils pulseaudio-alsa pulseaudio 
 alsamixer
 alsactl store
 --------------------------------
