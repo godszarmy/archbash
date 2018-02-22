@@ -12,4 +12,4 @@ GODARMYserver
 
 pacman -Syy
 linux-lts
-mkinitcpio -p linux
+mkinitcpio -p linux-lts
