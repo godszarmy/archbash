@@ -4,12 +4,11 @@ alsamixer
 alsactl store
 pacman -S gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav
 
-pacman -S xorg-server xorg-xinit xorg-apps xf86-input-mouse xf86-input-keyboard 
+pacman -S xorg xorg-server xorg-xinit xorg-apps xf86-input-mouse xf86-input-keyboard 
 xf86-input-libinput xdg-user-dirs
 pacman -S python
 pacman -S git
-
- xorg-utils xorg-server-utils  xorg-xmessage??????????
+pacman -Syu
  
  shutdown -h now
  
