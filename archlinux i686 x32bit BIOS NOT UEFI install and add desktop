@@ -101,13 +101,11 @@ pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard
  sytemctl enable lxdm.service
  pacman -S xfce4 ntp git
 
--------------------------
-pacman -Syy
---------------------------
+-------audio---------
 pacman -S alsa-utils terminus-font
 alsamixer
 alsactl store
- 
+--------------------------------
  
  
 shutdown -h now
