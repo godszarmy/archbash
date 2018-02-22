@@ -102,11 +102,10 @@ pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard
  pacman -S xfce4 ntp git
 
 -------audio---------
-pacman -S alsa-utils terminus-font
+pacman -S alsa-utils zip unzip unrar
 alsamixer
 alsactl store
 --------------------------------
- 
  
 shutdown -h now
 ==================================================
