@@ -1,3 +1,16 @@
+loadkeys fr
+
+0. PQRTITIONING USING cfdisk may help if  
+----------------------------------------------------------------------
+cfdisk /dev/sda
+ /boot/sda1 (1GiB) : bootable,
+ root/sda2 (70GiB) . primary all,
+ swap/sda3 (4GiB) this way: go to type : 82
+ click write
+ u type yes on the write option confirmation before u hit enter
+
+1. partitioning using parted
+---------------------------
 parted /dev/sda
 To then create a new MBR/msdos partition table for BIOS systems, use the following command:
 (parted) mklabel msdos
@@ -24,7 +37,6 @@ mount /dev/sda2 /mnt
 genfstab /mnt -U -p /mnt >> /mnt/etc/fstab
 
 ------------------------------------------------------------------------------------------
-loadkeys fr
 systemctl enable dhcpcd
 nano /etc/pacman.d/mirrorlist
 pacstrap /mnt base base-devel
