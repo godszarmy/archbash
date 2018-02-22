@@ -1,1 +1,15 @@
 
+now you push this shell code into console and press enter.
+
+locale-gen
+
+ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+
+hwclock --syntohc --utc
+
+nano etc/hostname
+GODARMYserver
+
+pacman -Syy
+linux-lts
+mkinitcpio -p linux
