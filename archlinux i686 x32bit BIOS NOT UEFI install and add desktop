@@ -102,7 +102,7 @@ pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard
  pacman -S xfce4 ntp git
 
 -------audio---------
-pacman -S alsa-utils pulseaudio-alsa pulseaudio 
+pacman -S alsa-utils pulseaudio-alsa pulseaudio pavucontrol
 alsamixer
 alsactl store
 --------------------------------
