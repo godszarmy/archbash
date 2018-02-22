@@ -17,8 +17,6 @@ mkinitcpio -p linux-lts
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install --recheck /dev/sda
 
-pacman -s networkmanager
-systemctl enable networkmanager
 
 
 
