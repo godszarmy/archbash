@@ -1,0 +1,6 @@
+nano /etc/locale.conf
+LANG=fr_FR.UTF-8
+
+nano /etc/vconsole.conf
+KEYMAP=fr-latin9
+FONT=lat9w-16
