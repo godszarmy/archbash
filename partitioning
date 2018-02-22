@@ -20,3 +20,5 @@ swapon /dev/sda3
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 mount /dev/sda2 /mnt
+
+genfstab /mnt -U -p /mnt >> /mnt/etc/fstab
