@@ -2,6 +2,8 @@ loadkeys fr
 systemctl enable dhcpcd
 nano /etc/pacman.d/mirrorlist
 pacstrap /mnt base base-devel
+arch-chroot /mnt
+
 pacman -S terminus-font
 setfont /usr/share/kbd/consolefonts/ter-132n
 
