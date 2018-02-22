@@ -1,14 +1,18 @@
+put usb or dvd then boot the system for a console then execute those shell codes:
+============================================================================================
 loadkeys fr
-
-0. PQRTITIONING USING cfdisk may help if  
-----------------------------------------------------------------------
+ls /usr/share/kbd/consolefonts
+setfont /usr/share/kbd/consolefonts/ter-132n
+=============================================================================================
+0. PQRTITIONING USING cfdisk  
+----------------------------
 cfdisk /dev/sda
  /boot/sda1 (1GiB) : bootable,
  root/sda2 (70GiB) . primary all,
  swap/sda3 (4GiB) this way: go to type : 82 linux swap / so~
  click write
  u type yes on the write option confirmation before u hit enter
-
+ =============================================================================================
 1. partitioning using parted
 ---------------------------
 parted /dev/sda
@@ -21,9 +25,9 @@ In the final example below, separate /boot/sda1 (1GiB), root/sda2 (70GiB), swap/
 (parted) set 1 boot on
 (parted) mkpart primary ext3 500MiB 70GiB
 (parted) mkpart primary linux-swap 70GiB 100%
-
+================================================================================================
 reboot
-
+-----------------------------------------------------------------------------------------------
 mkfs.ext3 /dev/sda1
 mkfs.ext4 /dev/sda2
 
@@ -64,9 +68,6 @@ echo GODARMYserver > etc/hostname
 nano etc/hosts
 127.0.0.1     localhost.localdomaine     GODARMYserver
 -----------------------------------------------------------------------------------------
-pacman -S neworkmanager
-systemctl enable NetworkManager
------------------------------------------------------------------------------------------
 linux-lts
 mkinitcpio -p linux-lts
 passwd
@@ -74,35 +75,46 @@ pacman -S grub
 grub-install --recheck /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 -----------------------------------------------------------------------------------------
+umount -R /mnt
 exit
-umount -R /mnt 
 reboot
------------------------------------------------------------------------------------------
-pacman -Syy
-nano /etc/pacman.d/mirrorlist
+===============================================================================
+*****i skipped the useradd phase but u can do it*******
+
+useradd -m -g users -G wheel -s /bin/bash CHOOSEANDPUTAANAMEE
+passwd ANDPUthAtNAMEE
+
+EDITOR=nano visudo
+UNCOMMA REMOVE DIEZE FROM WHEEL LINE ALL ALL ANY COMMAND SAVE AND EXIT NANO
+
+exit
+loginNONroot account
+=============================================================================
+nano /etc/pacman.d/mirrorlist ********no fr no volzvagn and only https**********
 pacman -Syu
------------------------------------------------------------------------------------
-**************************************look end..
--------------------------------------------------------------------
-pacman -S ntp
-pacman -S alsa-utils
+pacman -S python xdg-user-dirs
+pacman -S gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav
+pacman -S xorg xorg-server xorg-xinit xorg-apps 
+pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard 
+
+ pacman -S lxdm
+ sytemctl enable lxdm.service
+ pacman -S xfce4 ntp git
+
+-------------------------
+pacman -Syy
+--------------------------
+pacman -S alsa-utils terminus-font
 alsamixer
 alsactl store
-pacman -S gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav
-
-pacman -S xorg xorg-server xorg-xinit xorg-apps xf86-input-mouse xf86-input-keyboard 
-xf86-input-libinput xdg-user-dirs
-pacman -S python
-pacman -S git
-pacman xf86-video-intel
- pacman -S lxdm
  
- sytemctl enable lxdm.service
  
- pacman -S xfce4
  
 shutdown -h now
----------------------------------------------------
+==================================================
+extra configuration settings in case of network lost
+==================================================
 systemctl enable dhcpcd
-pacman -S terminus-font
-setfont /usr/share/kbd/consolefonts/ter-132n
+or
+pacman -S neworkmanager
+systemctl enable NetworkManager
