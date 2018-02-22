@@ -105,7 +105,7 @@ pacman -S xf86-video-intel xf86-input-mouse xf86-input-keyboard
 pacman -S alsa-utils pulseaudio-alsa pulseaudio pavucontrol
 alsamixer
 alsactl store
---------------------------------
+--------------------------------add a luncher /usr/bin/pavucontrolon GUI MODE
  
 shutdown -h now
 ==================================================
