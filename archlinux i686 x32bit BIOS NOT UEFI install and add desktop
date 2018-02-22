@@ -2,7 +2,7 @@ parted /dev/sda
 To then create a new MBR/msdos partition table for BIOS systems, use the following command:
 (parted) mklabel msdos
 
-In the final example below, separate /boot/sda1 (1GiB), /sda2 (70GiB), swap/sda3 (4GiB)
+In the final example below, separate /boot/sda1 (1GiB), root/sda2 (70GiB), swap/sda3 (4GiB) this way:
 
 (parted) mkpart primary ext3 1MiB 1GiB
 (parted) set 1 boot on
