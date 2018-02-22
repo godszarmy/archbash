@@ -1,0 +1,90 @@
+parted /dev/sda
+To then create a new MBR/msdos partition table for BIOS systems, use the following command:
+(parted) mklabel msdos
+
+In the final example below, separate /boot/sda1 (1GiB), /sda2 (70GiB), swap/sda3 (4GiB)
+
+(parted) mkpart primary ext3 1MiB 1GiB
+(parted) set 1 boot on
+(parted) mkpart primary ext3 500MiB 70GiB
+(parted) mkpart primary linux-swap 70GiB 100%
+
+reboot
+
+mkfs.ext3 /dev/sda1
+mkfs.ext3 /dev/sda2
+
+mkswap /dev/sda3
+swapon /dev/sda3
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+mount /dev/sda2 /mnt
+
+genfstab /mnt -U -p /mnt >> /mnt/etc/fstab
+
+------------------------------------------------------------------------------------------
+loadkeys fr
+systemctl enable dhcpcd
+nano /etc/pacman.d/mirrorlist
+pacstrap /mnt base base-devel
+arch-chroot /mnt
+
+pacman -S terminus-font
+setfont /usr/share/kbd/consolefonts/ter-132n
+-----------------------------------------------------------------------------------------
+nano /etc/locale.conf
+LANG=en_EN.UTF-8
+
+nano /etc/vconsole.conf
+KEYMAP=fr-latin9
+FONT=lat9w-16
+
+nano /etc/locale.gen
+en.us utf8 REMOVE DIEZE
+--------------------------------------------------------------------------------------------
+now you push this shell code into console and press enter.
+
+locale-gen
+
+ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+
+hwclock --syntohc --utc
+
+nano etc/hostname
+GODARMYserver
+
+pacman -Syy
+linux-lts
+mkinitcpio -p linux-lts
+
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-install --recheck /dev/sda
+
+passwd
+
+exit
+
+umount -R /mnt 
+reboot
+
+-------------------------------------------------------------------
+pacman -S ntp
+pacman -S alsa-utils
+alsamixer
+alsactl store
+pacman -S gst-plugins-good gst-plugins-bad gst-plugins-ugly gst-libav
+
+pacman -S xorg xorg-server xorg-xinit xorg-apps xf86-input-mouse xf86-input-keyboard 
+xf86-input-libinput xdg-user-dirs
+pacman -S python
+pacman -S git
+pacman -Syu
+pacman xf86-video-intel
+ pacman -S lxdm
+ 
+ sytemctl enable lxdm.service
+ 
+ pacman -S xfce4
+ 
+shutdown -h now
