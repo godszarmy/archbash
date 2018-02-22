@@ -9,6 +9,12 @@ xf86-input-libinput xdg-user-dirs
 pacman -S python
 pacman -S git
 pacman -Syu
+pacman xf86-video-intel
+ pacman -S lxdm
+ 
+ sytemctl enable lxdm.service
+ 
+ pacman -S xfce4
  
  shutdown -h now
  
