@@ -5,7 +5,7 @@ loadkeys fr
 cfdisk /dev/sda
  /boot/sda1 (1GiB) : bootable,
  root/sda2 (70GiB) . primary all,
- swap/sda3 (4GiB) this way: go to type : 82
+ swap/sda3 (4GiB) this way: go to type : 82 linux swap / so~
  click write
  u type yes on the write option confirmation before u hit enter
 
@@ -25,7 +25,7 @@ In the final example below, separate /boot/sda1 (1GiB), root/sda2 (70GiB), swap/
 reboot
 
 mkfs.ext3 /dev/sda1
-mkfs.ext3 /dev/sda2
+mkfs.ext4 /dev/sda2
 
 mkswap /dev/sda3
 swapon /dev/sda3
