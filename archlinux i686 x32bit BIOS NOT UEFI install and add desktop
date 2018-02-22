@@ -34,52 +34,55 @@ mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 mount /dev/sda2 /mnt
 
+pacstrap -i /mnt base base-devel
 genfstab /mnt -U -p /mnt >> /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
 
 ------------------------------------------------------------------------------------------
-systemctl enable dhcpcd
-nano /etc/pacman.d/mirrorlist
-pacstrap /mnt base base-devel
-arch-chroot /mnt
+nano /etc/locale.gen
+en.us utf8 REMOVE DIEZE
+fr~utf8 REMOVE DIEZE
+uk.gb~ REMOVE DIEZE
+----------------------------------------------------------------------------------------
+now save and exit nano then you push this shell code into console out of nano and press enter.
 
-pacman -S terminus-font
-setfont /usr/share/kbd/consolefonts/ter-132n
------------------------------------------------------------------------------------------
-nano /etc/locale.conf
-LANG=en_EN.UTF-8
-
+locale-gen
+----------------------------------------------------------------------------------------
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+export LANG=en_US.UTF-8
+----------------------------------------------------------------------------------------
 nano /etc/vconsole.conf
 KEYMAP=fr-latin9
 FONT=lat9w-16
-
-nano /etc/locale.gen
-en.us utf8 REMOVE DIEZE
---------------------------------------------------------------------------------------------
-now you push this shell code into console and press enter.
-
-locale-gen
-
+----------------------------------------------------------------------------------------
+push this shell code into console out of nano:
 ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
-
 hwclock --syntohc --utc
+-----------------------------------------------------------------------------------------
+echo GODARMYserver > etc/hostname
 
-nano etc/hostname
-GODARMYserver
-
-pacman -Syy
+nano etc/hosts
+127.0.0.1     localhost.localdomaine     GODARMYserver
+-----------------------------------------------------------------------------------------
+pacman -S neworkmanager
+systemctl enable NetworkManager
+-----------------------------------------------------------------------------------------
 linux-lts
 mkinitcpio -p linux-lts
-
-grub-mkconfig -o /boot/grub/grub.cfg
-grub-install --recheck /dev/sda
-
 passwd
-
+pacman -S grub
+grub-install --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+-----------------------------------------------------------------------------------------
 exit
-
 umount -R /mnt 
 reboot
-
+-----------------------------------------------------------------------------------------
+pacman -Syy
+nano /etc/pacman.d/mirrorlist
+pacman -Syu
+-----------------------------------------------------------------------------------
+**************************************look end..
 -------------------------------------------------------------------
 pacman -S ntp
 pacman -S alsa-utils
@@ -91,7 +94,6 @@ pacman -S xorg xorg-server xorg-xinit xorg-apps xf86-input-mouse xf86-input-keyb
 xf86-input-libinput xdg-user-dirs
 pacman -S python
 pacman -S git
-pacman -Syu
 pacman xf86-video-intel
  pacman -S lxdm
  
@@ -100,3 +102,7 @@ pacman xf86-video-intel
  pacman -S xfce4
  
 shutdown -h now
+---------------------------------------------------
+systemctl enable dhcpcd
+pacman -S terminus-font
+setfont /usr/share/kbd/consolefonts/ter-132n
