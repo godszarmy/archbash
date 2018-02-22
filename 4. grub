@@ -17,6 +17,13 @@ mkinitcpio -p linux-lts
 grub-mkconfig -o /boot/grub/grub.cfg
 grub-install --recheck /dev/sda
 
+passwd
+
+exit
+
+umount -R /mnt 
+reboot
+
 
 
 
