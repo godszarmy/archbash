@@ -60,8 +60,8 @@ KEYMAP=fr-latin9
 FONT=lat9w-16
 ----------------------------------------------------------------------------------------
 push this shell code into console out of nano:
-ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
-hwclock --syntohc --utc
+ln -sf /usr/share/zoneinfo/Africa/Morocco /etc/localtime
+hwclock --syntohc
 -----------------------------------------------------------------------------------------
 echo GODARMYserver > etc/hostname
 
