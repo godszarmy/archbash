@@ -71,7 +71,7 @@ now save and exit nano then you push this shell code into console out of nano an
 <b>locale-gen</b>
 ----------------------------------------------------------------------------------------
 <b>echo LANG=en_US.UTF-8 > /etc/locale.conf</b>
-<b>export LANG=en_US.UTF-8</b>
+<b> export LANG=C </b>
 ----------------------------------------------------------------------------------------
 <b>nano /etc/vconsole.conf</b>
 KEYMAP=fr-latin9
@@ -80,6 +80,7 @@ FONT=lat9w-16
 push this shell code into console out of nano:
 <b>ln -sf /usr/share/zoneinfo/Africa/Morocco /etc/localtime</b>
 <b>hwclock --syntohc</b>
+
 -----------------------------------------------------------------------------------------
 <b>echo GODARMYserver > etc/hostname</b>
 
